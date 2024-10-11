@@ -1,0 +1,31 @@
+.order-details, .customer-info {
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    text-align: left;
+}
+
+input[type="text"], input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+}
+
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ccc;
+}

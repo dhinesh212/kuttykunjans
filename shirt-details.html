@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <title>Shirt Details</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .product-details {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .zoomable {
+            width: 100%;
+            max-width: 400px;
+            transition: transform 0.2s; /* Animation */
+        }
+
+        .zoomable:hover {
+            transform: scale(1.2); /* Zoom effect */
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shirt 1</h1>
+    </header>
+    <div class="product-details">
+        <img src="shirt.jpg" alt="Shirt 1" class="zoomable">
+        <p>Description about Shirt 1... This shirt is made of high-quality cotton, perfect for all occasions.</p>
+        <p>Price: <strong>₹700</strong></p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+    <footer>
+        <p>&copy; 2024 Men's Clothing Brand</p>
+    </footer>
+
+    <script>
+        function addToCart() {
+            // Here you can implement the logic to add the item to the cart
+            alert('Shirt 1 has been added to your cart!');
+        }
+    </script>
+</body>
+</html>

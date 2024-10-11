@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <title>Chat with Us</title>
+</head>
+<body>
+    <header>
+        <h1>Chat with Us</h1>
+    </header>
+    <main>
+        <div class="contact-info">
+            <p>Contact us at: <strong>8976008966</strong></p>
+        </div>
+        <div class="chat-container">
+            <div class="chat-box" id="chatBox">
+                <div class="message">Welcome! How can we assist you today?</div>
+            </div>
+            <input type="text" id="userInput" placeholder="Type your message here...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Men's Clothing Brand</p>
+    </footer>
+
+    <script>
+       function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (message) {
+        const chatBox = document.getElementById('chatBox');
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user-message';
+        userMessage.textContent = message;
+        chatBox.appendChild(userMessage);
+        input.value = '';
+
+        // Send message to the server
+        fetch('/send-message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message }),
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(err => console.error('Error:', err));
+
+        // Simulated response
+        setTimeout(() => {
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot-message';
+            botMessage.textContent = "Thank you for your message! We'll get back to you shortly.";
+            chatBox.appendChild(botMessage);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+        }, 1000);
+        
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+    }
+}
+    </script>
+
+    <style>
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .chat-box {
+            background-color: #444;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #007bff; /* User messages in a different color */
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background-color: #444; /* Bot messages have a slightly different shade */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            width: 70%;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</body>
+</html>

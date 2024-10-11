@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <header>
+        <h1>Order Confirmation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="old-money-options.html">Old Money</a></li>
+            <li><a href="chat.html">Chat with Us</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="order-details">
+            <h2>Your Order</h2>
+            <p>Item: Shirt 1</p>
+            <p>Price: $700</p>
+            <p>Quantity: 1</p>
+            <hr>
+            <h3>Total: $700</h3>
+        </section>
+        <section class="customer-info">
+            <h2>Enter Your Information</h2>
+            <form id="orderForm">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                <br>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <br>
+                <button type="submit">Confirm Order</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Men's Clothing Brand</p>
+    </footer>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            // Here you would typically send the data to your backend
+            alert(`Order Confirmed!\nAddress: ${address}\nPhone: ${phone}`);
+            // Redirect or update the page as needed
+        });
+    </script>
+</body>
+</html>

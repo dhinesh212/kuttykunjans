@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <title>Your Cart</title>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+    <main>
+        <div class="cart-items">
+            <!-- Sample cart item -->
+            <div class="cart-item">
+                <h2>Shirt 1</h2>
+                <p>Price: $700</p>
+                <p>Quantity: <input type="number" value="1" min="1"></p>
+                <button class="remove-item" onclick="removeItem(this)">Remove</button>
+            </div>
+            <!-- You can add more cart items here -->
+            <p id="no-items" style="display: none;">No items in your cart.</p>
+        </div>
+        <button id="checkout-button" onclick="checkout()">Buy Now</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Men's Clothing Brand</p>
+    </footer>
+
+    <script>
+        function removeItem(button) {
+            const item = button.parentElement;
+            item.remove();
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            const noItemsMessage = document.getElementById('no-items');
+            if (cartItems.length === 0) {
+                noItemsMessage.style.display = 'block';
+            } else {
+                noItemsMessage.style.display = 'none';
+            }
+        }
+
+        function checkout() {
+            // Simulating a checkout process
+            const cartItems = document.querySelectorAll('.cart-item');
+            if (cartItems.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                // Redirect to order page or show order confirmation
+                window.location.href = 'order.html';
+            }
+        }
+
+        // Initialize cart display
+        updateCart();
+    </script>
+</body>
+</html>
