@@ -3,19 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop the latest trends in men's clothing with Kuttykunjans. Discover our wide range of shirts, pants, and more.">
     <link rel="stylesheet" href="main.css">
     <title>Men's Clothing Brand</title>
+    <style>
+        /* Basic styling for header and buttons */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer; /* Add cursor pointer */
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        header button:hover {
+            background-color: #555; /* Change background on hover */
+        }
+
+        /* Styling for the sliding side menu */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .side-menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            color: #f1f1f1;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>welcome to kuttykunjans clothing brand </h1>
-        <button class="old-money-button" onclick="location.href='old-money-options.html'">Explore Old Money</button>
-        <button class = " chat-with-us" onclick="location.href='chat.html'"> chat with us</button>
-        <button class=" cart" onclick="location.href='cart.html'">cart</button>
-        <button class = " order" onclick="location.href='order.html'">order</button>
-    </header>
-    <footer>
-        <p>&copy; 2024 Men's Clothing Brand</p>
-    </footer>
+
+<header>
+    <h1>Welcome to Kuttykunjans Clothing Brand</h1>
+    <button class="chat-with-us" onclick="location.href='chat.html'" aria-label="Chat with us">Chat with Us</button>
+    <button class="cart" onclick="location.href='cart.html'" aria-label="View Cart">Cart</button>
+    <button class="order" onclick="location.href='order.html'" aria-label="Place Order">Order</button>
+    <button class="menu-button" onclick="openMenu()" aria-label="Open Menu">Menu</button>
+</header>
+
+<!-- The Side Menu -->
+<nav id="sideMenu" class="side-menu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="old-money-options.html">Explore Old Money</a>
+    <a href="shirts.html">Shirts</a>
+    <a href="pants.html">Pants</a>
+</nav>
+
+<footer>
+    <p>&copy; 2024 Men's Clothing Brand</p>
+</footer>
+
+<script>
+    function openMenu() {
+        document.getElementById("sideMenu").style.width = "250px";
+    }
+
+    function closeMenu() {
+        document.getElementById("sideMenu").style.width = "0";
+    }
+
+    // Close menu if clicking outside
+    window.onclick = function(event) {
+        if (!event.target.matches('.menu-button') && !event.target.matches('.side-menu') && !event.target.matches('.close-btn')) {
+            closeMenu();
+        }
+    };
+</script>
+
 </body>
 </html>

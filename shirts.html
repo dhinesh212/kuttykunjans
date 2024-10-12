@@ -2,21 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Shirts</title>
+    <title>Shirts Collection</title>
+    <style>
+        /* Basic styling for buttons */
+        nav button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #555;
+        }
+
+        /* Layout for the navigation buttons */
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the product grid */
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap; /* Allow wrapping of product cards */
+        }
+
+        .product-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd; /* Add border for better visibility */
+            border-radius: 8px; /* Add rounded corners */
+            transition: box-shadow 0.3s;
+            width: 220px; /* Fixed width for uniformity */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover effect */
+        }
+
+        .product-card img {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Shirts Collection</h1>
     </header>
-    <div class="product-list">
-        <!-- Repeat this block for each shirt -->
-        <div class="product-card">
-            <a href="shirt-details.html"><img src="shirt.jpg" alt="Shirt 1"></a>
-            <p>Shirt 1 - $700</p>
-        </div>
-        <!-- Add more products here -->
-    </div>
+
+    <nav>
+        <button onclick="location.href='index.html'">Back to Home</button>
+        <button onclick="location.href='old-money-options.html'">Old Money Options</button>
+    </nav>
+
+    <main>
+        <section class="product-grid">
+            <div class="product-card" onclick="location.href='shirtsdetails.html'">
+                <img src="images/shirts1.jpg" alt="Shirt 1">
+                <h2>Shirt 1</h2>
+                <p>Premium quality cotton shirt.</p>
+            </div>
+            <div class="product-card" onclick="location.href='shirtsdetails.html'">
+                <img src="shirt2.jpg" alt="Shirt 2">
+                <h2>Shirt 2</h2>
+                <p>Stylish and comfortable fit.</p>
+            </div>
+            <div class="product-card" onclick="location.href='shirtsdetails.html'">
+                <img src="shirt3.jpg" alt="Shirt 3">
+                <h2>Shirt 3</h2>
+                <p>Classic design for all occasions.</p>
+            </div>
+            <!-- Add more product cards as needed -->
+        </section>
+    </main>
+
     <footer>
         <p>&copy; 2024 Men's Clothing Brand</p>
     </footer>

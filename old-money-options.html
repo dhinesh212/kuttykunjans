@@ -5,33 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title>Old Money Options</title>
+    <style>
+        /* Basic styling for buttons */
+        nav button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #555;
+        }
+
+        /* Layout for the navigation buttons */
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the product grid */
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap; /* Allow wrapping of product cards */
+        }
+
+        .product-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd; /* Add border for better visibility */
+            border-radius: 8px; /* Add rounded corners */
+            transition: box-shadow 0.3s;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover effect */
+        }
+
+        .product-card img {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Old Money Options</h1>
+        <h1>Old Money Collection</h1>
     </header>
+
     <nav>
-        <ul>
-            <li><a href="index.html">Back to Home</a></li>
-            <li><a href="shirts.html">Shirts</a></li>
-            <li><a href="pants.html">Pants</a></li>
-            <li><a href="tshirts.html">T-Shirts</a></li>
-        </ul>
+        <button onclick="location.href='index.html'">Back to Home</button>
+        <button onclick="location.href='shirts.html'">Shirts</button>
+        <button onclick="location.href='pants.html'">Pants</button>
+        <button onclick="location.href='tshirts.html'">T-Shirts</button>
     </nav>
+
     <main>
         <section class="product-grid">
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='shirts.html'">
                 <img src="shirts.jpg" alt="Shirts">
                 <h2>Shirts</h2>
                 <p>Explore our collection of premium shirts.</p>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='pants.html'">
                 <img src="pants.jpg" alt="Pants">
                 <h2>Pants</h2>
                 <p>Discover our stylish pants range.</p>
             </div>
+            <!-- You can add more product cards as needed -->
         </section>
     </main>
+
     <footer>
         <p>&copy; 2024 Men's Clothing Brand</p>
     </footer>

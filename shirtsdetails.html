@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Shirt Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .shirt-details {
+            text-align: center;
+        }
+
+        .shirt-details img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            transition: transform 0.3s; /* Smooth zoom effect */
+        }
+
+        .shirt-details img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        .image-slider {
+            position: relative;
+            width: 300px; /* Width of the slider */
+            margin: 0 auto; /* Center the slider */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .slides {
+            display: flex; /* Flex container for slides */
+            transition: transform 0.5s ease; /* Smooth transition */
+        }
+
+        .slide {
+            min-width: 300px; /* Set the width of each slide */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .back-button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        .navigation {
+            margin-top: 10px;
+        }
+
+        .nav-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .nav-button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shirt Details</h1>
+    </header>
+
+    <main class="shirt-details">
+        <div class="image-slider">
+            <div class="slides">
+                <div class="slide"><img src="images/shirts1.jpg" alt="Shirt 1"></div>
+                <div class="slide"><img src="images/aaa.jpg" alt="Shirt 2"></div>
+                <div class="slide"><img src="images/bbb.jpg" alt="Shirt 3"></div>
+                <div class="slide"><img src="images/ccc.jpg" alt="Shirt 4"></div>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="nav-button" onclick="prevSlide()">&#10094; Prev</button>
+            <button class="nav-button" onclick="nextSlide()">Next &#10095;</button>
+        </div>
+        <h2>Shirt 1</h2>
+        <p>Premium quality cotton shirt, perfect for casual and formal occasions. Available in various colors.</p>
+        <p><strong>Price:</strong> $49.99</p>
+        <button class="back-button" onclick="location.href='shirts.html'">Back to Collection</button>
+        <button class="back-button" onclick="alert('Added to cart!')">Add to Cart</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Men's Clothing Brand</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            // Loop the index to stay within bounds
+            if (index >= totalSlides) {
+                currentSlide = 0; // Reset to the first slide
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1; // Go to the last slide
+            } else {
+                currentSlide = index; // Set current slide to the index
+            }
+            slides.style.transform = `translateX(-${currentSlide * 300}px)`; // Adjust the transform
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1); // Move to the next slide
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1); // Move to the previous slide
+        }
+    </script>
+</body>
+</html>

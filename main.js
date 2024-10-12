@@ -1,42 +1,25 @@
-// Initialize an empty cart
-let cart = [];
+// Function to load cart from localStorage
+function loadCart() {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+        cart = JSON.parse(storedCart);
+    }
+}
 
-// Function to add a product to the cart
+// Function to save cart to localStorage
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Modify addToCart to save the cart after adding an item
 function addToCart(product) {
     cart.push(product);
     alert(`${product.name} has been added to your cart.`);
     updateCartCount();
+    saveCart(); // Save the updated cart
 }
 
-// Function to update the cart count displayed
-function updateCartCount() {
-    const cartCountElement = document.getElementById('cart-count');
-    cartCountElement.textContent = cart.length;
-}
-
-// Function to display cart items
-function displayCartItems() {
-    const cartItemsContainer = document.querySelector('.cart-items');
-    cartItemsContainer.innerHTML = ''; // Clear existing items
-
-    if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p>No items in your cart.</p>';
-        return;
-    }
-
-    cart.forEach((item) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.textContent = `${item.name} - $${item.price}`;
-        cartItemsContainer.appendChild(itemDiv);
-    });
-
-    const buyNowButton = document.createElement('button');
-    buyNowButton.textContent = 'Buy Now';
-    buyNowButton.onclick = checkout;
-    cartItemsContainer.appendChild(buyNowButton);
-}
-
-// Function to proceed to checkout
+// Modify checkout to clear the cart in localStorage as well
 function checkout() {
     const address = prompt("Please enter your address:");
     const phoneNumber = prompt("Please enter your phone number:");
@@ -44,42 +27,21 @@ function checkout() {
     if (address && phoneNumber) {
         const confirmation = confirm(`Confirm your order:\nAddress: ${address}\nPhone: ${phoneNumber}`);
         if (confirmation) {
-            // Here you would send data to the backend (using fetch or XMLHttpRequest)
             console.log("Order placed:", { address, phoneNumber, cart });
             alert("Order has been placed!");
             cart = []; // Clear the cart after order
             updateCartCount();
+            saveCart(); // Clear cart from localStorage
         }
     } else {
         alert("Order not placed. Please provide all required information.");
     }
 }
 
-// Function to handle product clicks and show product details
-function showProductDetails(product) {
-    // Navigate to product details page
-    window.location.href = `shirt-details.html?productId=${product.id}`;
-}
-
-// Example product data (to be replaced with real data from your server or database)
-const products = [
-    { id: 1, name: 'Shirt 1', price: 700 },
-    { id: 2, name: 'Shirt 2', price: 700 },
-    // Add more products as needed
-];
-
-// Event listeners (if necessary)
+// Call loadCart when DOM content is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Example of displaying cart items on cart page
+    loadCart();
     if (window.location.pathname.includes('cart.html')) {
         displayCartItems();
     }
-
-    // Add click events to product buttons (example)
-    products.forEach((product) => {
-        const addButton = document.getElementById(`add-to-cart-${product.id}`);
-        if (addButton) {
-            addButton.onclick = () => addToCart(product);
-        }
-    });
 });
