@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Profile</title>
+</head>
+<body>
+    <header>
+        <h1>Profile</h1>
+        <button class="chat-with-us" onclick="location.href='chat.html'" aria-label="Chat with us">Chat with Us</button>
+        <button class="cart" onclick="location.href='cart.html'" aria-label="View Cart">Cart</button>
+        <button class="order" onclick="location.href='order.html'" aria-label="Place Order">Order</button>
+        <button class="menu-button" onclick="openSideMenu()" aria-label="Open Menu">Menu</button>
+    </header>
+
+    <main>
+        <section class="profile-container">
+            <h2>Profile</h2>
+            <p>Welcome, <span id="username"></span>!</p>
+            <form action="/profile" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" name="phone" id="phone" required>
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Men's Clothing Brand</p>
+    </footer>
+
+    <script>
+        // Get username from localStorage
+        const username = localStorage.getItem('username');
+        document.getElementById('username').textContent = username;
+
+        // Add event listener to the form
+        document.querySelector('form').addEventListener('submit', event => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Send a POST request to the server to update the user profile
+            fetch('/profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, phone }),
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(err => console.error('Error:', err));
+
+            // Clear the form fields
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+        });
+    </script>
+</body>
+</html>

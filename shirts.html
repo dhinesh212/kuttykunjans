@@ -5,59 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <title>Shirts Collection</title>
-    <style>
-        /* Basic styling for buttons */
-        nav button {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        nav button:hover {
-            background-color: #555;
-        }
-
-        /* Layout for the navigation buttons */
-        nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Styling for the product grid */
-        .product-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            flex-wrap: wrap; /* Allow wrapping of product cards */
-        }
-
-        .product-card {
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #ddd; /* Add border for better visibility */
-            border-radius: 8px; /* Add rounded corners */
-            transition: box-shadow 0.3s;
-            width: 220px; /* Fixed width for uniformity */
-            cursor: pointer; /* Change cursor to pointer */
-        }
-
-        .product-card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover effect */
-        }
-
-        .product-card img {
-            width: 200px;
-            height: auto;
-            display: block;
-            margin: 0 auto 10px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -75,23 +22,27 @@
                 <img src="images/shirts1.jpg" alt="Shirt 1">
                 <h2>Shirt 1</h2>
                 <p>Premium quality cotton shirt.</p>
+                <button onclick="addToCart({id: 1, name: 'Shirt 1', price: 49.99})">Add to Cart</button>
             </div>
             <div class="product-card" onclick="location.href='shirtsdetails.html'">
-                <img src="shirt2.jpg" alt="Shirt 2">
+                <img src="images/shirt2.jpg" alt="Shirt 2">
                 <h2>Shirt 2</h2>
                 <p>Stylish and comfortable fit.</p>
+                <button onclick="addToCart({id: 2, name: 'Shirt 2', price: 59.99})">Add to Cart</button>
             </div>
             <div class="product-card" onclick="location.href='shirtsdetails.html'">
-                <img src="shirt3.jpg" alt="Shirt 3">
+                <img src="images/shirt3.jpg" alt="Shirt 3">
                 <h2>Shirt 3</h2>
                 <p>Classic design for all occasions.</p>
+                <button onclick="addToCart({id: 3, name: 'Shirt 3', price: 69.99})">Add to Cart</button>
             </div>
-            <!-- Add more product cards as needed -->
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Men's Clothing Brand</p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
